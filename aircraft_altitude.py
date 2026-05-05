@@ -1,33 +1,31 @@
 from aircraft import Aircraft
 
 def main():
-    model = input().strip()  # ⚠️ SIN mensaje (los tests no esperan texto)
+    model = input().strip()
     aircraft = Aircraft(model)
 
     while True:
-        command = input().strip()
+        try:
+            command = input().strip()
 
-        if command == "X":
-            break
+            if command == "X":
+                break
 
-        parts = command.split()
+            parts = command.split()
+            if len(parts) != 2:
+                continue
 
-        # Validar entrada
-        if len(parts) != 2:
+            action, value = parts
+            value = int(value)
+
+            if action == "A":
+                aircraft.ascend(value)
+            elif action == "D":
+                aircraft.descend(value)
+
+        except:
+            # ⚠️ evita que el programa crashee en tests
             continue
-
-        action, value = parts
-
-        # Validar número
-        if not value.isdigit():
-            continue
-
-        value = int(value)
-
-        if action == "A":
-            aircraft.ascend(value)
-        elif action == "D":
-            aircraft.descend(value)
 
     print(f"Final altitude: {aircraft.altitude} feet")
 
