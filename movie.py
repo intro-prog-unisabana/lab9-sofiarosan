@@ -18,5 +18,5 @@ if __name__ == "__main__":
 # FREEZE CODE END
     
     
-movie=Movie(title,director,year)
-print(movie)
+    movie=Movie(title,director,year)
+    print(movie)
