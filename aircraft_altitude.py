@@ -10,6 +10,10 @@ while True:
         break
 
     parts=command.split()
+
+    if len(parts) !=2:
+        continue
+
     action= parts[0]
     value=int(parts[1])
 
